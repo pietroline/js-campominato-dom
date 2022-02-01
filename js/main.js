@@ -3,6 +3,8 @@ function random(min, max){
     return Math.floor(Math.random() * (max - min +1) +min);
 }
 
+const NUMERO_BOMBE = 16;
+
 
 
 
@@ -72,6 +74,25 @@ function createElement(grid, caselle, ordine){
     }
 }
 
+/*la funzione generaBombe() si occupa di creare un array di numeri casuali
+La dimensione dell'array è stabilito dall'argomento della funzione, primo argomento
+Il range dei valori ammessi è coerente con il livello di difficoltà scelto, tramite il secondo argomento*/
+function generaBombe(numeroBombe, numeroCaselle){
+    const bombeGenerate = [];
+    while(bombeGenerate.length != numeroBombe){
+
+        //eseguo il push solo se il numero non è presente nell'array
+        const bomba = random(1, numeroCaselle);
+        if(!bombeGenerate.includes(bomba)){
+            bombeGenerate.push(bomba);
+        }
+        
+    }
+    console.log("array bombe " + bombeGenerate);
+
+    return bombeGenerate;
+} 
+
 
 
 const play = document.getElementById("play");
@@ -87,6 +108,38 @@ play.addEventListener("click", function(){
     // eseguo append delle caselle in funzione della difficoltà
     const grid = document.getElementById("grid");
     createElement(grid, difficolta(livello)[0], difficolta(livello)[1]);
+
+
+
+
+
+
+
+// ---------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+    //Invoco generaBombe() per generare le caselle bombe
+    const bombeCreate = generaBombe(NUMERO_BOMBE, difficolta(livello)[0]);
+
+
+    //aggiungo classe bomba
+    const addClasse = document.getElementsByClassName("quadrato");
+    
+    for(let i=0; i<addClasse.length; i++){
+
+        if(bombeCreate.includes(parseInt(addClasse[i].innerText))){
+            addClasse[i].classList.add("bomba");
+        }
+
+    }
+     
+    console.log(addClasse);
+    
    
 });
 

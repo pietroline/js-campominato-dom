@@ -113,6 +113,11 @@ main{
     color: #fff;
 }
 
+.quadrato.bomba{
+    background-color: red;
+    color: #fff;
+}
+
 footer{
     width: 80%;
 
