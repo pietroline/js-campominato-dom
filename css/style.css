@@ -1,0 +1,120 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* inizio mini framework*/
+    .ms_float_left{
+        float: left;
+    }
+
+    .ms_float_right{
+        float: right;
+    }
+
+    .ms_clearfix{
+        content: "";
+        display: table;
+        clear: both;
+    }
+/* fine mini framework*/
+
+header{
+    width: 80%;
+
+    margin: 2rem auto;
+}
+
+.immagine{
+    width: 3rem;
+    vertical-align: middle;
+}
+
+.nome_gioco{
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    vertical-align: middle;
+}
+
+#livello{
+    line-height: 3rem;
+}
+
+#difficolta{
+    width: 10rem;
+    
+    margin: 0 1.2rem;
+}
+
+#play{
+    padding: 0.5rem 0.8rem;
+}
+
+main{
+    background-color: #65ffd5;
+    
+    padding: 3rem;
+}
+
+.istruzioni{
+    text-align: center;
+    font-size: 4rem;
+
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.contenitore{
+    width: 40rem; 
+    height: 40rem;
+
+    border: 1px solid #000;
+
+    box-shadow: 1rem 1rem 2rem 0rem #000;
+
+    margin: auto;
+}
+
+.quadrato{
+    float: left;
+
+    border: 1px solid #000;
+    
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.5rem;
+}
+
+.quadrato.dieci{
+    width: calc(100% /10);
+    height: calc(100% /10);
+}
+
+.quadrato.nove{
+    width: calc(100% /9);
+    height: calc(100% /9);
+}
+
+.quadrato.sette{
+    width: calc(100% /7);
+    height: calc(100% /7);
+}
+
+.quadrato.clicked{
+    background-color: #6094e8;
+    color: #fff;
+}
+
+footer{
+    width: 80%;
+
+    margin: 2rem auto;
+}
