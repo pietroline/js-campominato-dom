@@ -5,8 +5,7 @@ function random(min, max){
 
 const NUMERO_BOMBE = 16;
 
-let boxAzzeccati = -1; //serve a contare i box premuti correttamente, parte da -1 perchè nel conteggio viene considerato anche la casella bomba cliccata
-                        //dichiarata come globale
+
 
 
 
@@ -15,6 +14,9 @@ let boxAzzeccati = -1; //serve a contare i box premuti correttamente, parte da -
 
 const play = document.getElementById("play");
 play.addEventListener("click", function(){
+
+    let boxAzzeccati = -1; //serve a contare i box premuti correttamente, parte da -1 perchè nel conteggio viene considerato anche la casella bomba cliccata
+
 
     document.getElementById("grid").innerHTML = "";
 
@@ -113,7 +115,7 @@ play.addEventListener("click", function(){
         if(bombeCreate.includes(casella)){
             terminaGioco(boxAzzeccati);
         }
-        
+
     }
 
     /*la funzione generaBombe() si occupa di creare un array di numeri casuali
