@@ -118,6 +118,22 @@ main{
     color: #fff;
 }
 
+.border_right{
+    border-right: 5px solid orangered;
+}
+
+.border_left{
+    border-left: 5px solid orangered;
+}
+
+.border_bottom{
+    border-bottom: 5px solid orangered;
+}
+
+.border_top{
+    border-top: 5px solid orangered;
+}
+
 #risultato{
     text-align: center;
 

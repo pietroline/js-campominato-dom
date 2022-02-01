@@ -16,9 +16,12 @@ const play = document.getElementById("play");
 play.addEventListener("click", function(){
 
     let boxAzzeccati = -1; //serve a contare i box premuti correttamente, parte da -1 perchè nel conteggio viene considerato anche la casella bomba cliccata
-
+    document.getElementById("risultato").innerHTML="";
 
     document.getElementById("grid").innerHTML = "";
+
+    const boxCheck = document.getElementById("inserisci_aiuto");
+    console.log(boxCheck);
 
     let livello = document.getElementById("difficolta").value;
 
@@ -114,8 +117,23 @@ play.addEventListener("click", function(){
         const casella = parseInt(this.innerText);
         if(bombeCreate.includes(casella)){
             terminaGioco(boxAzzeccati);
-        }else if(boxAzzeccati == difficolta(livello)[0] - NUMERO_BOMBE -1){
+        }else if(!bombeCreate.includes(casella)){
+            if(boxCheck.checked){
+                aiutoGioco(casella);
+            }
+        }
+        
+        if(boxAzzeccati == difficolta(livello)[0] - NUMERO_BOMBE -1){
             document.getElementById("risultato").innerHTML="Complimenti hai vinto!!!!";
+
+            // smetto di ascoltare i click successivi
+            const addClasse = document.getElementsByClassName("quadrato");
+        
+            for(let i=0; i<addClasse.length; i++){
+
+                addClasse[i].removeEventListener("click", boxCliccato);
+
+            }
         }
 
     }
@@ -155,6 +173,31 @@ play.addEventListener("click", function(){
             addClasse[i].removeEventListener("click", boxCliccato);
 
         }
+    }
+
+    function aiutoGioco(casella){
+
+        numeroCaselle = document.getElementsByClassName("quadrato").length;
+        if(!bombeCreate.includes(casella)){
+
+            if(bombeCreate.includes(casella+1)){
+                document.getElementsByClassName("quadrato")[casella-1].classList.add("border_right");
+
+            }
+            if(bombeCreate.includes(casella-1)){
+                document.getElementsByClassName("quadrato")[casella-1].classList.add("border_left");
+
+            }
+            if(bombeCreate.includes(casella+Math.sqrt(numeroCaselle))){
+                document.getElementsByClassName("quadrato")[casella-1].classList.add("border_bottom");
+
+            }
+            if(bombeCreate.includes(casella-Math.sqrt(numeroCaselle))){
+                document.getElementsByClassName("quadrato")[casella-1].classList.add("border_top");
+            }
+             
+        }
+
     }
 });
 
