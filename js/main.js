@@ -141,10 +141,6 @@ play.addEventListener("click", function(){
             if(bombeCreate.includes(parseInt(addClasse[i].innerText))){
                 addClasse[i].classList.add("bomba");
                 vittoria = 0;
-
-                // blocco la possibilità di premere le restanti caselle
-                const box = document.getElementsByClassName("quadrato");
-                
             }
 
         }
