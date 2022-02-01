@@ -5,6 +5,12 @@ function random(min, max){
 
 const NUMERO_BOMBE = 16;
 
+let boxAzzeccati = -1; //serve a contare i box premuti correttamente, parte da -1 perchè nel conteggio viene considerato anche la casella bomba cliccata
+                        //dichiarata come globale
+
+
+
+
 
 
 const play = document.getElementById("play");
@@ -73,8 +79,6 @@ play.addEventListener("click", function(){
     Si occupa di effettuare append dei box e non solo...*/ 
     function createElement(grid, caselle, ordine){
 
-        let boxAzzeccati = -1; //serve a contare i box premuti correttamente, parte da -1 perchè nel conteggio viene considerato anche la casella bomba cliccata
-
         for(let i=1; i<=caselle; i++){
 
             const box = document.createElement("div");
@@ -91,24 +95,25 @@ play.addEventListener("click", function(){
             // mi metto in ascolto sui click dei box e in caso venga premuto cambio colore del background-color e colore delle scritte
             // gestisco il caso in cui viene premuta più volte la stessa casella e il caso in cui viene premuta una casella bomba tramite la funzione boxCliccato
             box.addEventListener("click", boxCliccato);
-            
-            function boxCliccato(){
-
-                // gestisco click sulla stessa casella
-                console.log("cliccata casella: " + i);
-                boxAzzeccati += +1;
-
-                this.classList.add("clicked");
-                this.removeEventListener("click", boxCliccato);
-
-                //gestisco click su casella bomba
-                const casella = parseInt(this.innerText);
-                if(bombeCreate.includes(casella)){
-                    terminaGioco(boxAzzeccati);
-                }
-            }
 
         }
+    }
+
+    /*BoxCliccato() serve alla gestione degli eventi di click all'interno della funzione createElement() */
+    function boxCliccato(){
+
+        // gestisco click sulla stessa casella
+        boxAzzeccati += +1;
+
+        this.classList.add("clicked");
+        this.removeEventListener("click", boxCliccato);
+
+        //gestisco click su casella bomba
+        const casella = parseInt(this.innerText);
+        if(bombeCreate.includes(casella)){
+            terminaGioco(boxAzzeccati);
+        }
+        
     }
 
     /*la funzione generaBombe() si occupa di creare un array di numeri casuali
@@ -142,6 +147,8 @@ play.addEventListener("click", function(){
                 addClasse[i].classList.add("bomba");
                 vittoria = 0;
             }
+
+            addClasse[i].removeEventListener("click", boxCliccato);
 
         }
 
