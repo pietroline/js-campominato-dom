@@ -63,13 +63,13 @@ function createElement(grid, caselle, ordine){
 
         // mi metto in ascolto sui click dei box e in caso venga premuto cambio colore del background-color e colore delle scritte
         // gestisco il caso in cui viene premuta più volte la stessa casella
-        box.addEventListener("click", function(){
+        box.addEventListener("click", boxCliccata);
 
+        function boxCliccata(){
             console.log("cliccato");
             this.classList.add("clicked");
-            this.removeEventListener("click", this);
-    
-        });
+            this.removeEventListener("click", boxCliccata);
+        }
 
     }
 }
@@ -125,6 +125,8 @@ play.addEventListener("click", function(){
 
     //Invoco generaBombe() per generare le caselle bombe
     const bombeCreate = generaBombe(NUMERO_BOMBE, difficolta(livello)[0]);
+
+
 
 
     //aggiungo classe bomba
