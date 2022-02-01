@@ -115,7 +115,7 @@ play.addEventListener("click", function(){
         if(bombeCreate.includes(casella)){
             terminaGioco(boxAzzeccati);
         }else if(boxAzzeccati == difficolta(livello)[0] - NUMERO_BOMBE -1){
-            alert("Complimenti hai vinto!!!!");
+            document.getElementById("risultato").innerHTML="Complimenti hai vinto!!!!";
         }
 
     }
@@ -140,8 +140,6 @@ play.addEventListener("click", function(){
 
     /*TerminaGioco() si occupa di inserire la classe ".bomba" in tutti i box designati come bomba, visualizzando tutte le bombe del gioco*/
     function terminaGioco(boxAzzeccati){
-        
-        let vittoria = 1; //variabile per il controllo della vincita della partita, vale 1 se vinci, 0 se perdi
 
         const addClasse = document.getElementsByClassName("quadrato");
         
@@ -149,17 +147,14 @@ play.addEventListener("click", function(){
 
             if(bombeCreate.includes(parseInt(addClasse[i].innerText))){
                 addClasse[i].classList.add("bomba");
-                vittoria = 0;
+
+                document.getElementById("risultato").innerHTML=`Il gioco è terminato! Hai perso :( Hai azzeccato ${boxAzzeccati} caselle. Gioca ancora...`
+
             }
 
             addClasse[i].removeEventListener("click", boxCliccato);
 
         }
-
-        if(vittoria == 0){
-            alert(`Il gioco è terminato! Hai perso :( Hai azzeccato ${boxAzzeccati} caselle. Gioca ancora...`);
-        }
-
     }
 });
 

@@ -118,6 +118,15 @@ main{
     color: #fff;
 }
 
+#risultato{
+    text-align: center;
+
+    font-size: 2rem;
+    font-weight: bold;
+
+    margin-top: 5rem;
+}
+
 footer{
     width: 80%;
 
