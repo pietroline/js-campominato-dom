@@ -1,3 +1,22 @@
+/*random(min,max) ritorna un numero random tra min e max */
+function random(min, max){
+    return Math.floor(Math.random() * (max - min +1) +min);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*La funzione difficolta() gestisce il valore di difficoltà impostato.
 Ritorna un vettore, in funzione della difficoltà impostata,
@@ -41,9 +60,12 @@ function createElement(grid, caselle, ordine){
 
 
         // mi metto in ascolto sui click dei box e in caso venga premuto cambio colore del background-color e colore delle scritte
+        // gestisco il caso in cui viene premuta più volte la stessa casella
         box.addEventListener("click", function(){
 
+            console.log("cliccato");
             this.classList.add("clicked");
+            this.removeEventListener("click", this);
     
         });
 
