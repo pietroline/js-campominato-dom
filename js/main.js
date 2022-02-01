@@ -106,7 +106,7 @@ play.addEventListener("click", function(){
 
         // gestisco click sulla stessa casella
         boxAzzeccati += +1;
-console.log(boxAzzeccati)
+        
         this.classList.add("clicked");
         this.removeEventListener("click", boxCliccato);
 
@@ -124,7 +124,7 @@ console.log(boxAzzeccati)
     La dimensione dell'array è stabilito dall'argomento della funzione, primo argomento
     Il range dei valori ammessi è coerente con il livello di difficoltà scelto, tramite il secondo argomento*/
     function generaBombe(numeroBombe, numeroCaselle){
-        let bombeGenerate = [];
+        const bombeGenerate = [];
         while(bombeGenerate.length != numeroBombe){
 
             //eseguo il push solo se il numero non è già presente nell'array
@@ -135,7 +135,6 @@ console.log(boxAzzeccati)
             
         }
         console.log("array bombe " + bombeGenerate);
-        bombeGenerate=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
         return bombeGenerate;
     } 
 
