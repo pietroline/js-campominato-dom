@@ -21,7 +21,6 @@ play.addEventListener("click", function(){
     document.getElementById("grid").innerHTML = "";
 
     const boxCheck = document.getElementById("inserisci_aiuto");
-    console.log(boxCheck);
 
     let livello = document.getElementById("difficolta").value;
 
